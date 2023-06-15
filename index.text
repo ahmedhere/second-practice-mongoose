@@ -1,0 +1,34 @@
+const mongoose = require("mongoose");
+
+mongoose
+  .connect("mongodb://127.0.0.1:27017/MoviesDB")
+  .then(() => {
+    console.log("Yaaaaa its connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+const movieSchema = new mongoose.Schema({
+  title: String,
+  year: Number,
+  score: Number,
+  ratings: String,
+});
+
+const Movie = mongoose.model("Movie", movieSchema);
+
+// const War = new Movie({ title: "War", year: 2018, score: 9.8, ratings: "R" });
+
+// Movie.insertMany([
+//   { title: "The legend of Maula Jutt", year: 2022, score: 10, ratings: "18+" },
+//   { title: "Na Maloom Afrad", year: 2020, score: 7, ratings: "13+" },
+//   { title: "Na Maloom Afrad 2", year: 2021, score: 7, ratings: "13+" },
+// ])
+//   .then((data) => {
+//     console.log("It worked");
+//     console.log(data);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
